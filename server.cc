@@ -167,8 +167,8 @@ int TCPServer::process_command(int fd, const std::string& message) {
         "Current connections: " + std::to_string(client_fds_.size()) + "\n";
     send(fd, response.data(), response.size(), 0);
     return 0;
-  } else if (message.substr(0, 7) == "Message") {
-    send_letter_count(fd, message.substr(7));
+  } else if (message.substr(0, 5) == "count") {
+    send_letter_count(fd, message.substr(5));
     return 0;
   }
   return 404;
